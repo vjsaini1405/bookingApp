@@ -26,13 +26,11 @@ const BookingScreen = ({ navigation }) => {
   const handleSlotPress = (id) => {
         setSelectedSlot(id)
         dispatch(updateTimeSlot(id))
-      
   };
 
   console.log("selected ",selectedSlot);
 
   const handleBookAppointment = () => {
-    console.log("item");
     const userId = uuid.v4()
     let temp;
     timeSlot.forEach((item) => {
@@ -46,16 +44,10 @@ const BookingScreen = ({ navigation }) => {
       email: email,
       apoinmentTime: temp
     }
-    bookingList.map((item)=>{
-      if(item.apoinmentTime.id === selectedSlot){
-        Alert.alert("This Time Sloat Already Selected Please Select Another Time Sloat")
-      }
-      else{
         setAppointmentDetails(temp)
         dispatch(addNew(fromData))
         setModalVisible(true)
-      }
-    })
+
   };
 
   const handleEmailChange = (text) => {
