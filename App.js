@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import MyStack from './src/navigations';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import store from './src/store';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <GestureHandlerRootView style={{flex:1}}>
+      <StatusBar
+      animated={true}
+        barStyle={'light-content'}
+        backgroundColor={"black"}
+      />
+      <Provider store ={store}>
+          <MyStack/>
+      </Provider>
+    </GestureHandlerRootView>
+  );
+};
+
+export default App;
